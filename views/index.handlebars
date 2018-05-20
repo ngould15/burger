@@ -1,0 +1,83 @@
+<nav class="orange">
+    <div class="nav-wrapper">              
+    <a href="#" class="brand-logo">Eat Da Burger!</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/">home</a></li>
+        <li><a href="/">More Burgers</a></li>
+        <li class="brown"><a href="/">That Other Stuff?</a></li>
+      </ul>            
+    </div>
+  </nav>
+  <div class="container">
+<div>
+    <div class="image">
+        <img src="./public/assets/img/the-ultimate-hamburger.jpg"
+    </div>
+    <blockquote>
+        Burger dolor amet beef cow kobe brisket rump t-bone spare ribs wagyu Cheeseburger chuck flank. Chuck porterhouse shoulder, corned beef Cheeseburger patties cow brisket bacon kobe meatloaf filet mignon bresaola. Corned beef spare ribs ribeye sirloin beef ribs filet mignon flank rump beef kobe meatloaf Burger. Brisket short loin short rib chuck porterhouse Burger Hamburger spare ribs.
+    </blockquote>
+</div>
+<div class="row">
+    <form class="col m12">
+        {{!-- undevoured --}}
+        <div class="col l6 form-group">
+            <ul> 
+                {{#each burgers}}
+                    {{#unless devoured}}
+                        <div class="collection">
+                            <span class="collection-item">{{id}}. {{burger_name}} </span>
+                            <button id = "devoure" value="{{id}}" class="collection-item right waves-effect waves-light btn  light orange" id="{{id}}">Devour It!</button> 
+                        </div> 
+                    {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
+        {{!-- devoured --}}
+        <div class="col m6 form-group">
+            <ul>
+                {{#each burgers}}
+                    {{#if devoured}}
+                        <div class="collection">
+                            <div class="collection-item">
+                               <span>{{id}}. {{burger_name}} </span>
+                                {{!-- <button id = "Yum" value="{{id}}" class="disabled right waves-effect waves-light btn" id="{{id}}"></button>  --}}
+                            </div>
+                        </div>                     
+                    {{/if}}
+                {{/each}}
+            </ul> 
+        </div>
+    </form>
+</div>
+   
+{{!-- adding a burger --}}
+    <div class="row center">
+        <form class="col s12">
+            <div class="form-group">
+                <label for="burger">  <h5>Lets add another burger!</h5></label>
+                <textarea type="text" id="burgerName" name="burger_name" class="small"></textarea>
+                <button id="add" class="waves-effect btn btn-small orange"  type="submit">Add it!</button>  
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+       $(document).on('click',"#devoure",function(){
+           console.log(this.value);
+           var row = parseInt(this.value);
+           $.post("/devour_a_burger",{row},function(data,status){
+                console.log('successful devoure!' + data + status);
+            })
+       }) 
+    //add a burg 
+     $(document).on('click',"#add",function(){
+        var val =  $('#burgerName').val().trim();
+           console.log(val);
+           $.post("/add_a_burger",{val},function(data,status){
+                console.log('successful devoure!' + data + status);
+            })
+       }) 
+    });
+</script>
