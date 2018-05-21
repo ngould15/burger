@@ -5,8 +5,8 @@
    --   * **burger_name**: a string.
    --   * **devoured**: a boolean.
 
-CREATE DATABASE burgers_db
-USE burgers_db
+CREATE DATABASE burgers_db;
+USE burgers_db;
 
 CREATE TABLE burgers (
     id int auto_increment,
@@ -14,4 +14,4 @@ CREATE TABLE burgers (
     devoured boolean, 
     date TIMESTAMP DEFAULT current_timestamp,
     PRIMARY KEY(id)
-)
+);
