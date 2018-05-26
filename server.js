@@ -18,5 +18,5 @@ app.use('/', burgers);
 
 app.listen(port,function(err){
     if(err) throw err;
-    console.log('Ears on port: ' + port);
+    console.log('Listening on port: ' + port);
 });
