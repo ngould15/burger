@@ -60,7 +60,7 @@
            console.log(this.value);
            var row = parseInt(this.value);
            $.post("/devour_a_burger",{row},function(data,status){
-                console.log('successful devoure!' + data + status);
+                console.log('successful devour!' + data + status);
             })
        }) 
     //add a burg 
@@ -68,7 +68,7 @@
         var val =  $('#burgerName').val().trim();
            console.log(val);
            $.post("/add_a_burger",{val},function(data,status){
-                console.log('successful devoure!' + data + status);
+                console.log('successful devour!' + data + status);
             })
        }) 
     });
