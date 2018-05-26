@@ -13,4 +13,4 @@ A Node, Express, Handlebars, and MySQL burger app that lets users input the name
 
 <b>CREATE</b> a new burger using the "Place Order" form, which hits a /burger/create route in Express to insert a new burger into the MySQL database re-routes the webpage back to the index, where the burger is now ready to be eaten column (via Handlebars).
 
-![Burger](../public/assests/img/BurgerScreenshot.png)
+![Burger](../master/public/assets/img/BurgerScreenshot.png)
